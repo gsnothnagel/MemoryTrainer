@@ -6,6 +6,22 @@
     <title>Memory Trainer</title>
     <link rel="stylesheet" type="text/css" href="node_modules/spectrum-colorpicker/spectrum.css">
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        h1,
+        button,
+        input[type="number"] {
+            margin-bottom: 10px;
+        }
+
         img {
             image-rendering: -moz-crisp-edges; /* Firefox */
             image-rendering: pixelated; /* IE */
@@ -13,7 +29,7 @@
 
         #canvasContainer {
             position: relative;
-            margin-top: 20px;
+            margin-top: 10px;
             display: flex;
             align-items: flex-start;
         }
@@ -22,22 +38,29 @@
             cursor: crosshair;
         }
 
-        #colorPicker {}
+        #colorPicker {
+        }
 
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Memory Trainer</h1>
-    <button id="generateButton">Generate Random Image</button>
-    <input type="number" id="pixelInput" placeholder="Enter pixel size" min="1" value="2">
-    <br>
+    <div id="aaa">
+        <button id="generateButton">Generate Random Image</button>
+        <input type="number" id="pixelInput" placeholder="Enter pixel size" min="1" value="2">
+    </div>
     <div id="canvasContainer">
         <img id="randomImage">
         <canvas id="memoryCanvas"></canvas>
         <input type="text" id="colorPicker" class="colorPicker">
     </div>
     <br>
-    <div id="canvasContainer">
+    <div id="buttonContainer">
         <button id="toggleButton">Toggle</button>
         <button id="checkButton">Check</button>
     </div>
