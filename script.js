@@ -9,6 +9,10 @@ $("#colorPicker").spectrum({
 });
 
 document.getElementById('generateButton').addEventListener('click', () => {
+    generateImage();
+});
+
+function generateImage() {
     numPixels = parseInt(document.getElementById('pixelInput').value, 10);
 
     fetch(`/random-image?size=${numPixels}`)
@@ -20,11 +24,10 @@ document.getElementById('generateButton').addEventListener('click', () => {
 
             colors = Array(numPixels * numPixels).fill('rgb(128, 128, 128)');
             canvas.style.display = 'none';
-            document.getElementById('checkButton').style.display = 'none';
+            document.getElementById('checkButton').style.visibility = 'hidden';
             resize();
         })
-
-});
+}
 
 document.getElementById('toggleButton').addEventListener('click', () => {
 
@@ -42,10 +45,10 @@ document.getElementById('toggleButton').addEventListener('click', () => {
         img.style.display = 'block';
     }
 
-    if (document.getElementById('checkButton').style.display == 'block') {
-        document.getElementById('checkButton').style.display = 'none';
+    if (document.getElementById('checkButton').style.visibility == 'visible') {
+        document.getElementById('checkButton').style.visibility = 'hidden';
     } else {
-        document.getElementById('checkButton').style.display = 'block';
+        document.getElementById('checkButton').style.visibility = 'visible';
     }
 
 });
@@ -95,8 +98,8 @@ document.getElementById('checkButton').addEventListener('click', () => {
 let canvas = document.getElementById('memoryCanvas');
 canvas.style.cursor = 'auto';
 canvas.style.display = 'none';
-document.getElementById('randomImage').style.display = 'none';
-document.getElementById('checkButton').style.display = 'none';
+generateImage();
+document.getElementById('checkButton').style.visibility = 'hidden';
 var colors;
 var numPixels;
 var pixelSize;
@@ -136,7 +139,7 @@ window.addEventListener('resize', () => {
 
 
 function resize() {
-    const imageSize = Math.min(window.innerWidth, window.innerHeight) * 0.4;
+    const imageSize = Math.min(window.innerWidth / 2, window.innerHeight) * 0.8;
     const img = document.getElementById('randomImage');
     img.style.width = `${imageSize}px`;
     img.style.height = `${imageSize}px`;
